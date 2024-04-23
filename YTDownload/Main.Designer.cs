@@ -42,15 +42,21 @@
             this.buttonGitHub = new System.Windows.Forms.Button();
             this.pictureBoxThumbnail = new System.Windows.Forms.PictureBox();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelNav.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumbnail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelNav
             // 
             this.panelNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.panelNav.Controls.Add(this.label3);
+            this.panelNav.Controls.Add(this.pictureBox1);
             this.panelNav.Controls.Add(this.buttonMinimize);
             this.panelNav.Controls.Add(this.buttonClose);
             this.panelNav.Dock = System.Windows.Forms.DockStyle.Top;
@@ -81,7 +87,7 @@
             this.buttonClose.BackColor = System.Drawing.Color.IndianRed;
             this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClose.Location = new System.Drawing.Point(793, 10);
+            this.buttonClose.Location = new System.Drawing.Point(787, 10);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(14, 14);
             this.buttonClose.TabIndex = 4;
@@ -173,9 +179,9 @@
             this.buttonDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDownload.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDownload.ForeColor = System.Drawing.Color.White;
-            this.buttonDownload.Location = new System.Drawing.Point(578, 25);
+            this.buttonDownload.Location = new System.Drawing.Point(578, 26);
             this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(191, 30);
+            this.buttonDownload.Size = new System.Drawing.Size(191, 29);
             this.buttonDownload.TabIndex = 5;
             this.buttonDownload.Text = "Download";
             this.buttonDownload.UseVisualStyleBackColor = false;
@@ -191,7 +197,7 @@
             this.buttonGitHub.ForeColor = System.Drawing.Color.Gray;
             this.buttonGitHub.Image = global::YTDownload.Properties.Resources.github_24px;
             this.buttonGitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonGitHub.Location = new System.Drawing.Point(57, 26);
+            this.buttonGitHub.Location = new System.Drawing.Point(56, 26);
             this.buttonGitHub.Name = "buttonGitHub";
             this.buttonGitHub.Size = new System.Drawing.Size(119, 27);
             this.buttonGitHub.TabIndex = 7;
@@ -223,12 +229,46 @@
             this.buttonSearch.TabIndex = 7;
             this.buttonSearch.UseVisualStyleBackColor = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::YTDownload.Properties.Resources.YouTube_24px;
+            this.pictureBox1.Location = new System.Drawing.Point(23, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkGray;
+            this.label3.Location = new System.Drawing.Point(53, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 18);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "YTDownload";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.BackColor = System.Drawing.Color.White;
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.progressBar1.Location = new System.Drawing.Point(0, 418);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(829, 10);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 12;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(829, 512);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
@@ -242,9 +282,11 @@
             this.Opacity = 0.98D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panelNav.ResumeLayout(false);
+            this.panelNav.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumbnail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,6 +308,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonDownload;
         private System.Windows.Forms.Button buttonGitHub;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

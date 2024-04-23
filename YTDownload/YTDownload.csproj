@@ -89,5 +89,8 @@
   <ItemGroup>
     <None Include="Resources\github_24px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YouTube_24px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
