@@ -1,2 +1,2 @@
 # YTDownload
- yet another application that download videos in youtube
+ yet another app that download video in youtube
