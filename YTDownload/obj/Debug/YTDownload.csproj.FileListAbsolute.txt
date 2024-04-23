@@ -1,0 +1,10 @@
+D:\Venus\Repos\YTDownload\YTDownload\bin\Debug\YTDownload.exe.config
+D:\Venus\Repos\YTDownload\YTDownload\bin\Debug\YTDownload.exe
+D:\Venus\Repos\YTDownload\YTDownload\bin\Debug\YTDownload.pdb
+D:\Venus\Repos\YTDownload\YTDownload\obj\Debug\YTDownload.csproj.AssemblyReference.cache
+D:\Venus\Repos\YTDownload\YTDownload\obj\Debug\YTDownload.Properties.Resources.resources
+D:\Venus\Repos\YTDownload\YTDownload\obj\Debug\YTDownload.csproj.GenerateResource.cache
+D:\Venus\Repos\YTDownload\YTDownload\obj\Debug\YTDownload.csproj.CoreCompileInputs.cache
+D:\Venus\Repos\YTDownload\YTDownload\obj\Debug\YTDownload.exe
+D:\Venus\Repos\YTDownload\YTDownload\obj\Debug\YTDownload.pdb
+D:\Venus\Repos\YTDownload\YTDownload\obj\Debug\YTDownload.Main.resources
