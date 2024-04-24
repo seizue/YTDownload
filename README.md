@@ -1,5 +1,5 @@
 # YTDownload
- Yet another app that download video in youtube
+ Yet another app that download videos in youtube
 ## Download 
 [Download](https://github.com/seizue/YTDownload/releases/tag/0.01)
 
