@@ -24,7 +24,7 @@ namespace YTDownload
 
         public Main()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
 
         private YouTubeService YouTubeService
@@ -202,13 +202,20 @@ namespace YTDownload
                 videoId = textBoxURL.Text;
             }
 
-            string savePath = @"C:\Users\Admin\Downloads";
+            // Get the download location from the textBoxFileLocation
+            string savePath = textBoxFileLocation.Text;
+
+            if (string.IsNullOrEmpty(savePath))
+            {
+                // If the download location is not set, prompt the user to choose it
+                MessageBox.Show("Please choose a download location");
+                return;
+            }
 
             try
             {
-                // Get the selected quality from comboBoxQuality
+                // Download the video using the selected or default location
                 string selectedQuality = comboBoxQuality.SelectedItem?.ToString();
-
                 await DownloadVideo(videoId, savePath, selectedQuality);
             }
             catch (Exception ex)
@@ -287,11 +294,12 @@ namespace YTDownload
                 videoId = textBoxURL.Text;
             }
 
-            string savePath = @"C:\Users\Admin\Downloads";
+            // Get the default download location
+            string defaultDownloadLocation = LoadDefaultDownloadLocationFromSettings();
 
             try
             {
-                await DownloadAudio(videoId, savePath);
+                await DownloadAudio(videoId, defaultDownloadLocation);
             }
             catch (Exception ex)
             {
@@ -307,7 +315,7 @@ namespace YTDownload
 
             if (audioStreamInfo != null)
             {
-                // Download the audio
+                // Download the audio to the default download location
                 string filePath = Path.Combine(savePath, $"{videoId}.mp3");
                 var progress = new Progress<double>(p =>
                 {
@@ -323,6 +331,63 @@ namespace YTDownload
             {
                 MessageBox.Show("No available audio streams for this video.");
             }
+        }
+
+        private void buttonDFLocation_Click(object sender, EventArgs e)
+        {
+            // Open a folder browser dialog to choose the download location
+            using (var folderDialog = new FolderBrowserDialog())
+            {
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Set the chosen location to the textBoxFileLocation
+                    textBoxFileLocation.Text = folderDialog.SelectedPath;
+
+                    // Update the default download location setting to the newly selected location
+                    SaveDefaultDownloadLocationToSettings(folderDialog.SelectedPath);
+                }
+            }
+        }
+
+        private void SaveDefaultDownloadLocationToSettings(string selectedPath)
+        {
+           
+            Properties.Settings.Default.DefaultDownloadLocation = selectedPath;
+            Properties.Settings.Default.Save();
+           
+        }
+
+
+        private void LoadDefaultDownloadLocation()
+        {
+          
+            string defaultDownloadLocation = LoadDefaultDownloadLocationFromSettings();
+
+            // Display the default download location in the textBoxFileLocation
+            textBoxFileLocation.Text = defaultDownloadLocation;
+        }
+
+        private string LoadDefaultDownloadLocationFromSettings()
+        {
+            // Retrieve the default download location from application settings
+            string defaultDownloadLocation = Properties.Settings.Default.DefaultDownloadLocation;
+
+            // If the saved location is not null or empty, return it
+            if (!string.IsNullOrEmpty(defaultDownloadLocation))
+            {
+                return defaultDownloadLocation;
+            }
+            else
+            {
+                // If the saved location is null or empty, return a default location
+                return @"C:\Users\Public\Downloads"; // Default location if settings not found
+            }
+        }
+
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            LoadDefaultDownloadLocation();
         }
     }
 }
