@@ -17,7 +17,7 @@
                    ApiKey = "your_API_Key",
 
                    // Place your Application Name here
-                   ApplicationName = "you_application_name"
+                   ApplicationName = "your_application_name"
                });
            }
            return youtubeService;
