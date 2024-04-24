@@ -137,7 +137,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label1.ForeColor = System.Drawing.Color.Silver;
             this.label1.Location = new System.Drawing.Point(136, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 18);
@@ -149,7 +149,7 @@
             this.comboBoxQuality.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.comboBoxQuality.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxQuality.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxQuality.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBoxQuality.ForeColor = System.Drawing.Color.Silver;
             this.comboBoxQuality.Location = new System.Drawing.Point(139, 167);
             this.comboBoxQuality.Name = "comboBoxQuality";
             this.comboBoxQuality.Size = new System.Drawing.Size(121, 21);
@@ -159,7 +159,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label2.ForeColor = System.Drawing.Color.Silver;
             this.label2.Location = new System.Drawing.Point(136, 137);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 18);
@@ -181,7 +181,7 @@
             this.richTextBoxTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxTitle.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.richTextBoxTitle.ForeColor = System.Drawing.Color.DarkGray;
             this.richTextBoxTitle.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxTitle.Name = "richTextBoxTitle";
             this.richTextBoxTitle.ReadOnly = true;
@@ -325,7 +325,7 @@
             this.textBoxFileLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.textBoxFileLocation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxFileLocation.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFileLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBoxFileLocation.ForeColor = System.Drawing.Color.DarkGray;
             this.textBoxFileLocation.Location = new System.Drawing.Point(299, 167);
             this.textBoxFileLocation.Name = "textBoxFileLocation";
             this.textBoxFileLocation.Size = new System.Drawing.Size(342, 19);
@@ -335,7 +335,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label5.ForeColor = System.Drawing.Color.Silver;
             this.label5.Location = new System.Drawing.Point(296, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(175, 18);
