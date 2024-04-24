@@ -258,6 +258,7 @@
             this.buttonGitHub.Text = "Open Source! ";
             this.buttonGitHub.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonGitHub.UseVisualStyleBackColor = false;
+            this.buttonGitHub.Click += new System.EventHandler(this.buttonGitHub_Click);
             // 
             // buttonDLVideo
             // 

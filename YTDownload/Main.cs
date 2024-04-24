@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -35,7 +36,10 @@ namespace YTDownload
                 {
                     youtubeService = new YouTubeService(new BaseClientService.Initializer()
                     {
+                        // Place your API Key here
                         ApiKey = "AIzaSyAvkw9nNLiyqOgGF_mqpDD5VSZZLclWXr8",
+
+                        // Place your Application Name here
                         ApplicationName = "YTDL"
                     });
                 }
@@ -384,10 +388,14 @@ namespace YTDownload
             }
         }
 
-
         private void Main_Load(object sender, EventArgs e)
         {
             LoadDefaultDownloadLocation();
+        }
+
+        private void buttonGitHub_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/seizue/YTDownload?tab=readme-ov-file");
         }
     }
 }
