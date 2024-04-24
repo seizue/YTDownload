@@ -37,10 +37,10 @@ namespace YTDownload
                     youtubeService = new YouTubeService(new BaseClientService.Initializer()
                     {
                         // Place your API Key here
-                        ApiKey = "AIzaSyAvkw9nNLiyqOgGF_mqpDD5VSZZLclWXr8",
+                        ApiKey = "your_API_Key",
 
                         // Place your Application Name here
-                        ApplicationName = "YTDL"
+                        ApplicationName = "you_application_name"
                     });
                 }
                 return youtubeService;
