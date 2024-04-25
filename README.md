@@ -1,7 +1,7 @@
 # YTDownload
  Yet another app that download videos in youtube
 ## Download 
-[Download](https://github.com/seizue/YTDownload/releases/tag/0.01)
+[Download](https://github.com/seizue/YTDownload/releases)
 
 ## Getting started
 ```csharp
