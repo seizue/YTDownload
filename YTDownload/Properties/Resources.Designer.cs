@@ -63,6 +63,26 @@ namespace YTDownload.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap broom_24px {
+            get {
+                object obj = ResourceManager.GetObject("broom_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap clear_symbol_24px {
+            get {
+                object obj = ResourceManager.GetObject("clear_symbol_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap folder_24px {
             get {
                 object obj = ResourceManager.GetObject("folder_24px", resourceCulture);

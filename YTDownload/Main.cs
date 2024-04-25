@@ -10,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YoutubeExplode;
@@ -22,6 +23,7 @@ namespace YTDownload
         private bool isDragging = false;
         private Point lastCursor;
         private Point lastForm;
+        private const int MaxUrlLength = 63;
 
         public class StreamInfoWithQuality
         {
@@ -30,10 +32,17 @@ namespace YTDownload
         }
 
         private YouTubeService youtubeService;
+        private CancellationTokenSource cancellationTokenSource;
 
         public Main()
         {
-            InitializeComponent();         
+            InitializeComponent();
+
+            // Attach event handler to TextChanged event
+            textBoxURL.TextChanged += textBoxURL_TextChanged;
+
+            // Initialize textBoxFileLocation with the default download location
+            textBoxFileLocation.Text = Properties.Settings.Default.DefaultDownloadLocation;
         }
 
         private YouTubeService YouTubeService
@@ -117,6 +126,9 @@ namespace YTDownload
 
             string videoId = GetVideoIdFromUrl(textBoxURL.Text);
 
+            // Populate comboBoxQuality with available quality options
+            PopulateQualityComboBox(videoId);
+
             try
             {
                 var videosListRequest = YouTubeService.Videos.List("snippet");
@@ -140,9 +152,6 @@ namespace YTDownload
 
                 // Display video thumbnail in PictureBox
                 pictureBoxThumbnail.Load(thumbnailUrl);
-
-                // Populate comboBoxQuality with available quality options
-                PopulateQualityComboBox(videoId);
             }
             catch (Exception ex)
             {
@@ -224,18 +233,34 @@ namespace YTDownload
                 return;
             }
 
+            // Check if video quality is selected
+            if (comboBoxQuality.SelectedItem == null)
+            {
+                MessageBox.Show("Please choose a video quality before downloading.");
+                return;
+            }
+
             try
             {
+                // Initialize cancellation token
+                cancellationTokenSource = new CancellationTokenSource();
+                CancellationToken cancellationToken = cancellationTokenSource.Token;
+
                 // Download the video using the selected or default location
-                string selectedQuality = comboBoxQuality.SelectedItem?.ToString();
-                await DownloadVideo(videoId, savePath, selectedQuality);
+                string selectedQuality = comboBoxQuality.SelectedItem.ToString();
+                await DownloadVideo(videoId, savePath, selectedQuality, cancellationToken);
+            }
+            catch (OperationCanceledException)
+            {
+                MessageBox.Show("Download canceled.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error downloading video: " + ex.Message);
             }
         }
-        private async Task DownloadVideo(string videoId, string savePath, string selectedQuality)
+
+        private async Task DownloadVideo(string videoId, string savePath, string selectedQuality, CancellationToken cancellationToken)
         {
             var youtube = new YoutubeClient();
             var streamManifest = await youtube.Videos.Streams.GetManifestAsync(videoId);
@@ -272,7 +297,7 @@ namespace YTDownload
                     progressBar1.Value = (int)(p * 100); // Convert progress to percentage
                 });
 
-                await youtube.Videos.Streams.DownloadAsync(selectedStream.StreamInfo, filePath, progress);
+                await youtube.Videos.Streams.DownloadAsync(selectedStream.StreamInfo, filePath, progress, cancellationToken);
 
                 MessageBox.Show("Video downloaded successfully!");
             }
@@ -281,6 +306,7 @@ namespace YTDownload
                 MessageBox.Show($"No available {selectedQuality} streams for this video.");
             }
         }
+
 
         // Helper method to parse quality string into a comparable format
         private int ParseQualityToInt(string quality)
@@ -417,6 +443,35 @@ namespace YTDownload
         private void buttonGitHub_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/seizue/YTDownload?tab=readme-ov-file");
+        }
+
+        private void textBoxURL_TextChanged(object sender, EventArgs e)
+        {
+            // Trim the URL if it exceeds the maximum length
+            if (textBoxURL.Text.Length > MaxUrlLength)
+            {
+                textBoxURL.Text = textBoxURL.Text.Substring(0, MaxUrlLength) + "...";
+            }
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxURL.Text = "";
+        }
+
+        private void buttonCancelDL_Click(object sender, EventArgs e)
+        {
+            // Cancel ongoing download operation
+            CancelDownload();
+        }
+
+        private void CancelDownload()
+        {
+            // Cancel ongoing download operation if any
+            if (cancellationTokenSource != null)
+            {
+                cancellationTokenSource.Cancel();
+            }
         }
     }
 }

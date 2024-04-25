@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelNav = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxURL = new System.Windows.Forms.TextBox();
@@ -40,22 +39,26 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBoxTitle = new System.Windows.Forms.RichTextBox();
-            this.pictureBoxThumbnail = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonDLMp3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.buttonGitHub = new System.Windows.Forms.Button();
             this.buttonDLVideo = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.buttonDFLocation = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxFileLocation = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonDFLocation = new System.Windows.Forms.Button();
+            this.buttonGitHub = new System.Windows.Forms.Button();
+            this.pictureBoxThumbnail = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonCancelDL = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panelNav.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumbnail)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumbnail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelNav
@@ -84,17 +87,6 @@
             this.label3.Size = new System.Drawing.Size(86, 18);
             this.label3.TabIndex = 13;
             this.label3.Text = "YTDownload";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::YTDownload.Properties.Resources.YouTube_24px;
-            this.pictureBox1.Location = new System.Drawing.Point(23, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
             // 
             // buttonMinimize
             // 
@@ -126,13 +118,13 @@
             // 
             this.textBoxURL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
             this.textBoxURL.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxURL.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxURL.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxURL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.textBoxURL.Location = new System.Drawing.Point(139, 95);
-            this.textBoxURL.Multiline = true;
             this.textBoxURL.Name = "textBoxURL";
-            this.textBoxURL.Size = new System.Drawing.Size(493, 24);
+            this.textBoxURL.Size = new System.Drawing.Size(486, 20);
             this.textBoxURL.TabIndex = 1;
+            this.textBoxURL.TextChanged += new System.EventHandler(this.textBoxURL_TextChanged);
             // 
             // label1
             // 
@@ -141,9 +133,9 @@
             this.label1.ForeColor = System.Drawing.Color.Silver;
             this.label1.Location = new System.Drawing.Point(136, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 18);
+            this.label1.Size = new System.Drawing.Size(141, 18);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Paste URL";
+            this.label1.Text = "Paste URL or Video ID";
             // 
             // comboBoxQuality
             // 
@@ -190,20 +182,10 @@
             this.richTextBoxTitle.TabIndex = 11;
             this.richTextBoxTitle.Text = "";
             // 
-            // pictureBoxThumbnail
-            // 
-            this.pictureBoxThumbnail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.pictureBoxThumbnail.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBoxThumbnail.Location = new System.Drawing.Point(372, 0);
-            this.pictureBoxThumbnail.Name = "pictureBoxThumbnail";
-            this.pictureBoxThumbnail.Size = new System.Drawing.Size(171, 124);
-            this.pictureBoxThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxThumbnail.TabIndex = 3;
-            this.pictureBoxThumbnail.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panel2.Controls.Add(this.buttonCancelDL);
             this.panel2.Controls.Add(this.buttonDLMp3);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.buttonGitHub);
@@ -241,26 +223,6 @@
             this.label4.Size = new System.Drawing.Size(0, 18);
             this.label4.TabIndex = 14;
             // 
-            // buttonGitHub
-            // 
-            this.buttonGitHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGitHub.BackColor = System.Drawing.Color.Transparent;
-            this.buttonGitHub.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(36)))), ((int)(((byte)(31)))));
-            this.buttonGitHub.FlatAppearance.BorderSize = 0;
-            this.buttonGitHub.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonGitHub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGitHub.ForeColor = System.Drawing.Color.Gray;
-            this.buttonGitHub.Image = global::YTDownload.Properties.Resources.github_24px;
-            this.buttonGitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonGitHub.Location = new System.Drawing.Point(23, 26);
-            this.buttonGitHub.Name = "buttonGitHub";
-            this.buttonGitHub.Size = new System.Drawing.Size(119, 27);
-            this.buttonGitHub.TabIndex = 7;
-            this.buttonGitHub.Text = "Open Source! ";
-            this.buttonGitHub.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonGitHub.UseVisualStyleBackColor = false;
-            this.buttonGitHub.Click += new System.EventHandler(this.buttonGitHub_Click);
-            // 
             // buttonDLVideo
             // 
             this.buttonDLVideo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -289,38 +251,6 @@
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 12;
             // 
-            // buttonDFLocation
-            // 
-            this.buttonDFLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDFLocation.BackColor = System.Drawing.Color.Transparent;
-            this.buttonDFLocation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.buttonDFLocation.FlatAppearance.BorderSize = 0;
-            this.buttonDFLocation.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.buttonDFLocation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.buttonDFLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDFLocation.Image = global::YTDownload.Properties.Resources.folder_24px;
-            this.buttonDFLocation.Location = new System.Drawing.Point(647, 164);
-            this.buttonDFLocation.Name = "buttonDFLocation";
-            this.buttonDFLocation.Size = new System.Drawing.Size(35, 24);
-            this.buttonDFLocation.TabIndex = 13;
-            this.buttonDFLocation.UseVisualStyleBackColor = false;
-            this.buttonDFLocation.Click += new System.EventHandler(this.buttonDFLocation_Click);
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.buttonSearch.FlatAppearance.BorderSize = 2;
-            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Image = global::YTDownload.Properties.Resources.search_14px;
-            this.buttonSearch.Location = new System.Drawing.Point(638, 95);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(44, 24);
-            this.buttonSearch.TabIndex = 7;
-            this.buttonSearch.UseVisualStyleBackColor = false;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
             // textBoxFileLocation
             // 
             this.textBoxFileLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
@@ -343,12 +273,136 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "Choose Download Location";
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClear.BackColor = System.Drawing.Color.Transparent;
+            this.buttonClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonClear.FlatAppearance.BorderSize = 0;
+            this.buttonClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.buttonClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClear.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClear.ForeColor = System.Drawing.Color.DarkGray;
+            this.buttonClear.Image = global::YTDownload.Properties.Resources.broom_24px;
+            this.buttonClear.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonClear.Location = new System.Drawing.Point(556, 59);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(126, 24);
+            this.buttonClear.TabIndex = 17;
+            this.buttonClear.Text = "Clear Search Box";
+            this.buttonClear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearch.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
+            this.buttonSearch.FlatAppearance.BorderSize = 2;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Image = global::YTDownload.Properties.Resources.search_14px;
+            this.buttonSearch.Location = new System.Drawing.Point(631, 95);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(51, 20);
+            this.buttonSearch.TabIndex = 16;
+            this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // buttonDFLocation
+            // 
+            this.buttonDFLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDFLocation.BackColor = System.Drawing.Color.Transparent;
+            this.buttonDFLocation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonDFLocation.FlatAppearance.BorderSize = 0;
+            this.buttonDFLocation.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.buttonDFLocation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonDFLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDFLocation.Image = global::YTDownload.Properties.Resources.folder_24px;
+            this.buttonDFLocation.Location = new System.Drawing.Point(647, 164);
+            this.buttonDFLocation.Name = "buttonDFLocation";
+            this.buttonDFLocation.Size = new System.Drawing.Size(35, 24);
+            this.buttonDFLocation.TabIndex = 13;
+            this.buttonDFLocation.UseVisualStyleBackColor = false;
+            this.buttonDFLocation.Click += new System.EventHandler(this.buttonDFLocation_Click);
+            // 
+            // buttonGitHub
+            // 
+            this.buttonGitHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGitHub.BackColor = System.Drawing.Color.Transparent;
+            this.buttonGitHub.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(36)))), ((int)(((byte)(31)))));
+            this.buttonGitHub.FlatAppearance.BorderSize = 0;
+            this.buttonGitHub.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonGitHub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGitHub.ForeColor = System.Drawing.Color.Gray;
+            this.buttonGitHub.Image = global::YTDownload.Properties.Resources.github_24px;
+            this.buttonGitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonGitHub.Location = new System.Drawing.Point(23, 26);
+            this.buttonGitHub.Name = "buttonGitHub";
+            this.buttonGitHub.Size = new System.Drawing.Size(119, 27);
+            this.buttonGitHub.TabIndex = 7;
+            this.buttonGitHub.Text = "Open Source! ";
+            this.buttonGitHub.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonGitHub.UseVisualStyleBackColor = false;
+            this.buttonGitHub.Click += new System.EventHandler(this.buttonGitHub_Click);
+            // 
+            // pictureBoxThumbnail
+            // 
+            this.pictureBoxThumbnail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.pictureBoxThumbnail.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBoxThumbnail.Location = new System.Drawing.Point(372, 0);
+            this.pictureBoxThumbnail.Name = "pictureBoxThumbnail";
+            this.pictureBoxThumbnail.Size = new System.Drawing.Size(171, 124);
+            this.pictureBoxThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxThumbnail.TabIndex = 3;
+            this.pictureBoxThumbnail.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::YTDownload.Properties.Resources.YouTube_24px;
+            this.pictureBox1.Location = new System.Drawing.Point(23, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // buttonCancelDL
+            // 
+            this.buttonCancelDL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancelDL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
+            this.buttonCancelDL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.buttonCancelDL.FlatAppearance.BorderSize = 2;
+            this.buttonCancelDL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancelDL.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelDL.ForeColor = System.Drawing.Color.White;
+            this.buttonCancelDL.Location = new System.Drawing.Point(297, 26);
+            this.buttonCancelDL.Name = "buttonCancelDL";
+            this.buttonCancelDL.Size = new System.Drawing.Size(150, 29);
+            this.buttonCancelDL.TabIndex = 16;
+            this.buttonCancelDL.Text = "Cancel Download";
+            this.buttonCancelDL.UseVisualStyleBackColor = false;
+            this.buttonCancelDL.Click += new System.EventHandler(this.buttonCancelDL_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Gray;
+            this.panel3.Location = new System.Drawing.Point(463, 458);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1, 19);
+            this.panel3.TabIndex = 17;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(829, 512);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxFileLocation);
             this.Controls.Add(this.buttonDFLocation);
@@ -357,7 +411,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxQuality);
-            this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxURL);
             this.Controls.Add(this.panelNav);
@@ -369,11 +422,11 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.panelNav.ResumeLayout(false);
             this.panelNav.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumbnail)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumbnail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,7 +439,6 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.TextBox textBoxURL;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.ComboBox comboBoxQuality;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
@@ -403,6 +455,10 @@
         private System.Windows.Forms.Button buttonDFLocation;
         private System.Windows.Forms.TextBox textBoxFileLocation;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonCancelDL;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
