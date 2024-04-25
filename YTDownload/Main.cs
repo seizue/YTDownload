@@ -1,4 +1,5 @@
-﻿using Google.Apis.Services;
+﻿using AngleSharp.Common;
+using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YoutubeExplode;
+using YoutubeExplode.Videos.Streams;
 
 namespace YTDownload
 {
@@ -20,6 +22,12 @@ namespace YTDownload
         private bool isDragging = false;
         private Point lastCursor;
         private Point lastForm;
+
+        public class StreamInfoWithQuality
+        {
+            public IStreamInfo StreamInfo { get; set; }
+            public string VideoQuality { get; set; }
+        }
 
         private YouTubeService youtubeService;
 
@@ -40,7 +48,7 @@ namespace YTDownload
                         ApiKey = "your_API_Key",
 
                         // Place your Application Name here
-                        ApplicationName = "you_application_name"
+                        ApplicationName = "your_application_name"
                     });
                 }
                 return youtubeService;
@@ -227,19 +235,32 @@ namespace YTDownload
                 MessageBox.Show("Error downloading video: " + ex.Message);
             }
         }
-
         private async Task DownloadVideo(string videoId, string savePath, string selectedQuality)
         {
             var youtube = new YoutubeClient();
             var streamManifest = await youtube.Videos.Streams.GetManifestAsync(videoId);
 
             // Get all available muxed streams
-            var muxedStreams = streamManifest.GetMuxedStreams();
+            var muxedStreams = streamManifest.GetMuxedStreams().Select(s => new StreamInfoWithQuality
+            {
+                StreamInfo = s,
+                VideoQuality = s.VideoQuality != null ? s.VideoQuality.ToString() : null
+            });
+
+            // Get all available video-only streams
+            var videoOnlyStreams = streamManifest.GetVideoOnlyStreams().Select(s => new StreamInfoWithQuality
+            {
+                StreamInfo = s,
+                VideoQuality = s.VideoQuality != null ? s.VideoQuality.ToString() : null
+            });
+
+            // Concatenate muxed and video-only streams
+            var allStreams = muxedStreams.Concat(videoOnlyStreams);
 
             // Find the closest quality to the selected quality
-            var selectedStream = muxedStreams
-                .OrderByDescending(s => ParseQualityToInt(s.VideoQuality.ToString()))
-                .FirstOrDefault(s => ParseQualityToInt(s.VideoQuality.ToString()) >= ParseQualityToInt(selectedQuality));
+            var selectedStream = allStreams
+                .OrderByDescending(s => ParseQualityToInt(s.VideoQuality))
+                .FirstOrDefault(s => ParseQualityToInt(s.VideoQuality) >= ParseQualityToInt(selectedQuality));
 
             if (selectedStream != null)
             {
@@ -251,7 +272,7 @@ namespace YTDownload
                     progressBar1.Value = (int)(p * 100); // Convert progress to percentage
                 });
 
-                await youtube.Videos.Streams.DownloadAsync(selectedStream, filePath, progress);
+                await youtube.Videos.Streams.DownloadAsync(selectedStream.StreamInfo, filePath, progress);
 
                 MessageBox.Show("Video downloaded successfully!");
             }
